@@ -1,1 +1,1391 @@
-Test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Lanka Heritage Trail — 5-Day Itinerary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --terracotta: #B55C3A;
+    --stone: #F0E8D8;
+    --stone-dark: #D6C9B0;
+    --ink: #1A1208;
+    --deep: #2C1A0E;
+    --jungle: #3B5E3A;
+    --jungle-light: #4E7A4D;
+    --cream: #FAF6EE;
+    --warm-white: #FFFDF8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--deep);
+    color: var(--stone);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 50%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 30%, rgba(181,92,58,0.10) 0%, transparent 60%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 6vw, 62px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: var(--stone-dark);
+    position: relative;
+    margin-top: 8px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    position: relative;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+  }
+
+  .hero-meta-item .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .hero-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--stone-dark);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .hero-meta-divider {
+    width: 1px;
+    background: rgba(201,168,76,0.3);
+    align-self: stretch;
+  }
+
+  /* ── OVERVIEW STRIP ── */
+  .overview-strip {
+    background: var(--jungle);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .overview-item {
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    font-size: 12.5px;
+    letter-spacing: 0.3px;
+  }
+
+  .overview-item:last-child { border-right: none; }
+
+  .overview-item .icon {
+    font-size: 16px;
+    opacity: 0.85;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    text-align: center;
+    padding: 52px 0 36px;
+  }
+
+  .section-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    letter-spacing: 4px;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--deep);
+  }
+
+  /* ── DAY CARD ── */
+  .day-card {
+    background: var(--warm-white);
+    border: 1px solid var(--stone-dark);
+    border-radius: 4px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: stretch;
+    background: var(--deep);
+    color: white;
+  }
+
+  .day-number-block {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .day-num {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .day-num-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .day-title-block {
+    padding: 16px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: var(--stone);
+  }
+
+  .day-hotel {
+    font-size: 11.5px;
+    color: var(--stone-dark);
+    margin-top: 3px;
+    letter-spacing: 0.2px;
+  }
+
+  .day-hotel span {
+    color: var(--gold-light);
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    padding: 24px 28px 20px;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 20px;
+    position: relative;
+  }
+
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 39px;
+    top: 32px;
+    bottom: 0;
+    width: 1px;
+    background: var(--stone-dark);
+  }
+
+  .time-col {
+    width: 60px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .time-badge {
+    font-size: 10.5px;
+    color: var(--terracotta);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .dot-col {
+    width: 18px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--stone-dark);
+    background: var(--warm-white);
+    flex-shrink: 0;
+  }
+
+  .dot.hotel { border-color: var(--jungle); background: var(--jungle); }
+  .dot.food  { border-color: var(--terracotta); background: var(--terracotta); }
+  .dot.star  { border-color: var(--gold); background: var(--gold); }
+  .dot.travel { border-color: var(--deep); background: var(--deep); }
+
+  .content-col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .stop-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16.5px;
+    font-weight: 600;
+    color: var(--deep);
+    line-height: 1.3;
+  }
+
+  .stop-type {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-left: 8px;
+    font-weight: 500;
+  }
+
+  .stop-note {
+    font-size: 12.5px;
+    color: #5a4a35;
+    margin-top: 3px;
+    line-height: 1.55;
+  }
+
+  /* ── FOOD CARD ── */
+  .food-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FEF7EC;
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    padding: 6px 12px;
+    margin-top: 4px;
+  }
+
+  .food-card .restaurant-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--deep);
+  }
+
+  .food-card .rating {
+    font-size: 11px;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ── TIPS BOX ── */
+  .tips-section {
+    padding: 0 0 48px;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 0;
+  }
+
+  .tip-card {
+    background: var(--warm-white);
+    border: 1px solid var(--stone-dark);
+    border-radius: 4px;
+    padding: 20px;
+    display: flex;
+    gap: 14px;
+  }
+
+  .tip-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .tip-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 5px;
+  }
+
+  .tip-text {
+    font-size: 12.5px;
+    color: #5a4a35;
+    line-height: 1.6;
+  }
+
+  /* ── RESTAURANT SUMMARY TABLE ── */
+  .restaurant-section {
+    padding: 0 0 52px;
+  }
+
+  .rest-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .rest-table thead th {
+    background: var(--deep);
+    color: var(--stone);
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+
+  .rest-table tbody tr {
+    border-bottom: 1px solid var(--stone-dark);
+    transition: background 0.15s;
+  }
+
+  .rest-table tbody tr:hover {
+    background: #F5EDD8;
+  }
+
+  .rest-table tbody td {
+    padding: 12px 16px;
+    vertical-align: middle;
+  }
+
+  .rest-table .day-badge {
+    background: var(--deep);
+    color: var(--gold);
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+
+  .rest-table .rest-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--deep);
+  }
+
+  .rest-table .stars {
+    color: var(--terracotta);
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* ── DIVIDER ── */
+  .ornament-divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 8px;
+    padding: 10px 0 28px;
+    opacity: 0.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    color: var(--stone-dark);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 11.5px;
+    letter-spacing: 0.5px;
+  }
+
+  footer .footer-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+
+  /* ── ROUTE BUTTON ── */
+  .route-bar {
+    background: #EBF4EA;
+    border-top: 1px solid rgba(59,94,58,0.2);
+    border-bottom: 1px solid rgba(59,94,58,0.2);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .route-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--jungle);
+    font-weight: 500;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .route-stops {
+    flex: 1;
+    font-size: 11.5px;
+    color: #4a6349;
+    line-height: 1.4;
+  }
+
+  .route-stops span {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .route-stops .arrow {
+    color: var(--gold);
+    font-size: 10px;
+    margin: 0 2px;
+  }
+
+  .route-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--jungle);
+    color: white;
+    text-decoration: none;
+    padding: 7px 16px;
+    border-radius: 3px;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.1s;
+    flex-shrink: 0;
+  }
+
+  .route-btn:hover {
+    background: var(--jungle-light);
+    transform: translateY(-1px);
+  }
+
+  .route-btn svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+
+  .mode-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(59,94,58,0.12);
+    color: var(--jungle);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 10.5px;
+    font-weight: 500;
+    border: 1px solid rgba(59,94,58,0.2);
+  }
+
+
+  .highlight-bar {
+    background: linear-gradient(135deg, var(--jungle) 0%, #2E4A2D 100%);
+    color: white;
+    padding: 14px 28px;
+    font-size: 12.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .highlight-bar .hl-icon { font-size: 16px; }
+  .highlight-bar strong { color: var(--gold-light); }
+
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10.5px;
+    color: var(--jungle);
+    text-decoration: none;
+    background: rgba(59,94,58,0.08);
+    border: 1px solid rgba(59,94,58,0.25);
+    border-radius: 3px;
+    padding: 2px 7px;
+    margin-left: 8px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    vertical-align: middle;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .map-link:hover {
+    background: var(--jungle);
+    color: white;
+    border-color: var(--jungle);
+  }
+  .map-link svg {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+
+  @media print {
+    .day-card { break-inside: avoid; }
+    .hero { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-meta { gap: 18px; }
+    .overview-item { padding: 14px 18px; font-size: 11.5px; }
+    .timeline { padding: 18px 16px 14px; }
+    .time-col { width: 48px; }
+    .time-badge { font-size: 9.5px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">✦ UNESCO World Heritage ✦</div>
+  <h1 class="hero-title">Sri Lanka<br><em>Heritage Trail</em></h1>
+  <p class="hero-subtitle">ANURADHAPURA &nbsp;→&nbsp; POLONNARUWA</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="num">5</span>
+      <span class="label">Days</span>
+    </div>
+    <div class="hero-meta-divider"></div>
+    <div class="hero-meta-item">
+      <span class="num">23</span>
+      <span class="label">Sites</span>
+    </div>
+    <div class="hero-meta-divider"></div>
+    <div class="hero-meta-item">
+      <span class="num">2</span>
+      <span class="label">Cities</span>
+    </div>
+    <div class="hero-meta-divider"></div>
+    <div class="hero-meta-item">
+      <span class="num">4</span>
+      <span class="label">Restaurants</span>
+    </div>
+  </div>
+</div>
+
+<!-- OVERVIEW STRIP -->
+<div class="overview-strip">
+  <div class="overview-item"><span class="icon">🚂</span> Arrive by train at Anuradhapura, 10:00 AM</div>
+  <div class="overview-item"><span class="icon">🏨</span> Miridiya Lake Resort · 2 nights</div>
+  <div class="overview-item"><span class="icon">🚌</span> Bus to Polonnaruwa · Day 3</div>
+  <div class="overview-item"><span class="icon">🏨</span> Hotel Sudu Araliya · 2 nights</div>
+  <div class="overview-item"><span class="icon">🍽️</span> Breakfast & dinner at hotel only</div>
+</div>
+
+
+<div class="container">
+
+  <div class="section-header">
+    <span class="section-tag">Day-by-Day Schedule</span>
+    <h2 class="section-title">Your Complete Itinerary</h2>
+  </div>
+
+  <!-- ══════════════════ DAY 1 ══════════════════ -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number-block">
+        <span class="day-num">Day</span>
+        <span class="day-num-big">01</span>
+      </div>
+      <div class="day-title-block">
+        <div class="day-title">Arrival &amp; Sacred City Core</div>
+        <div class="day-hotel">🏨 <span>Miridiya Lake Resort</span> · Check-in 2:00 PM</div>
+      </div>
+    </div>
+    <!-- DAY 1 ROUTE -->
+    <div class="route-bar">
+      <div class="route-label">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+        Full Day Route
+        <span class="mode-badge">🚗 Driving</span>
+      </div>
+      <div class="route-stops">
+        <span>🚂 Railway Station</span><span class="arrow">→</span>
+        <span>🌳 Bodhi Tree</span><span class="arrow">→</span>
+        <span>🏛️ Lovamahapaya</span><span class="arrow">→</span>
+        <span>⚪ Ruwanweli</span><span class="arrow">→</span>
+        <span>🍛 Sorriso (Lunch)</span><span class="arrow">→</span>
+        <span>🏯 Thuparamaya</span><span class="arrow">→</span>
+        <span>🏨 Hotel</span><span class="arrow">→</span>
+        <span>🧱 Jetavanaramaya</span><span class="arrow">→</span>
+        <span>🌅 Mirisawetiya</span>
+      </div>
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Anuradhapura+Railway+Station&origin_place_id=ChIJNbBYmAr1_DoRbO7TJGlVA2E&destination=Mirisawetiya+Stupa&destination_place_id=ChIJIzDH47_1_DoRm-fBnm8TvJ0&waypoints=Jaya+Sri+Maha+Bodhi|Lovamahapaya|Ruwanweli+Maha+Seya|Sorriso+Restaurant|Thuparamaya|Miridiya+Lake+Resort|Jetavanaramaya&waypoints_place_ids=ChIJfbxYZb31_DoRVO6nFKyDpl4|ChIJM_DxPAD1_DoRwtSPPfFZ3Nc|ChIJQRJv0Zb1_DoRjWifejv6EvQ|ChIJUUsQYwD1_DoRpkuK9wz_yp4|ChIJHU05dJf1_DoRHUJt23YkCbM|ChIJZbXnLb71_DoRR7TZGHuxJ3U|ChIJr-Eu5pv1_DoR27crwG6O1yQ&travelmode=driving" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">10:00 AM</span></div>
+        <div class="dot-col"><div class="dot travel"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Anuradhapura Railway Station <span class="stop-type">Arrival</span><a class="map-link" href="https://maps.google.com/?cid=6990524956686937708" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Store luggage at the station cloakroom. Hire a tuk-tuk outside and negotiate a full-day rate (≈ 2,500–3,500 LKR). Head straight to the ancient city.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">10:20 AM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Jaya Sri Maha Bodhi ⭐<a class="map-link" href="https://maps.google.com/?cid=6820283460803358292" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">World's oldest documented sacred tree (288 BC). Remove shoes at the counter outside. Calm and spiritually powerful mid-morning. <em>45 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">11:10 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Lovamahapaya (Brazen Palace)<a class="map-link" href="https://maps.google.com/?cid=15554406105685677250" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">2-min walk from Bodhi Tree. 1,600 ancient stone pillars of a once 9-storey palace. Quick but impressive. <em>20 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">11:35 AM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Ruwanweli Maha Seya ⭐<a class="map-link" href="https://maps.google.com/?cid=17587394628202489997" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Sri Lanka's most iconic white stupa. Walk the full perimeter — don't miss the elephant wall at the base. Brilliant in midday light. <em>55 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">12:45 PM</span></div>
+        <div class="dot-col"><div class="dot food"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Lunch <span class="stop-type">Local Restaurant</span></div>
+          <div class="food-card">
+            <span>🍛</span>
+            <span class="restaurant-name">Sorriso Restaurant</span>
+            <span class="rating">★ 4.8 &nbsp;·&nbsp; Sri Lankan Buffet &nbsp;·&nbsp; Open 7:30 AM–10 PM</span>
+          </div>
+          <div class="stop-note" style="margin-top:5px;">Delicious rice & curry buffet with fresh juices. Unique outdoor setting built around a tree. <em>45 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">1:45 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Thuparamaya<a class="map-link" href="https://maps.google.com/?cid=12900882700485607965" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Sri Lanka's oldest stupa. Quieter and more peaceful than the main sites. Unique concentric stone pillars. <em>30 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">2:15 PM</span></div>
+        <div class="dot-col"><div class="dot hotel"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Miridiya Lake Resort — Check-in 🏨<a class="map-link" href="https://maps.google.com/?cid=8441911168785298503" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Drop bags, freshen up. Collect tuk-tuk for the afternoon session.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">3:30 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Jetavanaramaya<a class="map-link" href="https://maps.google.com/?cid=2654747111679834075" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">One of the world's tallest ancient brick structures. Glows beautifully in afternoon light. <em>50 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">4:30 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Mirisawetiya Stupa<a class="map-link" href="https://maps.google.com/?cid=11365980929702094747" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Peaceful lakeside stupa near Tissa Wewa. Built by King Dutugemunu. Close to hotel — easy return for dinner. <em>45 min.</em></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="highlight-bar">
+      <span class="hl-icon">💡</span>
+      <span>Jaya Sri Maha Bodhi, Lovamahapaya &amp; Ruwanweli are all within 500m of each other — walk between them to save time.</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════ DAY 2 ══════════════════ -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number-block">
+        <span class="day-num">Day</span>
+        <span class="day-num-big">02</span>
+      </div>
+      <div class="day-title-block">
+        <div class="day-title">North Ruins &amp; Evening Magic</div>
+        <div class="day-hotel">🏨 <span>Miridiya Lake Resort</span> · Breakfast &amp; Dinner</div>
+      </div>
+    </div>
+
+    <!-- DAY 2 ROUTE -->
+    <div class="route-bar">
+      <div class="route-label">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+        Full Day Route
+        <span class="mode-badge">🚗 Driving</span>
+      </div>
+      <div class="route-stops">
+        <span>🏛️ Abhayagiri</span><span class="arrow">→</span>
+        <span>🧘 Samadhi Statue</span><span class="arrow">→</span>
+        <span>🌿 Ranmasu Uyana</span><span class="arrow">→</span>
+        <span>🍛 Little Paradise (Lunch)</span><span class="arrow">→</span>
+        <span>🧱 Jetavanaramaya</span><span class="arrow">→</span>
+        <span>🌇 Ruwanweli (Evening)</span>
+      </div>
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Miridiya+Lake+Resort&origin_place_id=ChIJZbXnLb71_DoRR7TZGHuxJ3U&destination=Ruwanweli+Maha+Seya&destination_place_id=ChIJQRJv0Zb1_DoRjWifejv6EvQ&waypoints=Abhayagiriya|Samadhi+Buddha+Statue|Ranmasu+Uyana|Little+Paradise+Restaurant|Jetavanaramaya&waypoints_place_ids=ChIJtfdplWNf_DoRp8dlDcpuhfI|ChIJNzvIIGNf_DoRZPk7OCGO3l0|ChIJ0Rk4lbj1_DoRnR44ebljdAU|ChIJ2TaMWlX0_DoR0EDppWINbdM|ChIJr-Eu5pv1_DoR27crwG6O1yQ&travelmode=driving" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">8:00 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Abhayagiriya Dagoba<a class="map-link" href="https://maps.google.com/?cid=17475495743168300967" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Arrive early while it's cool. Sri Lanka's 2nd largest stupa. The on-site museum has incredible excavated artefacts. <em>60 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">9:15 AM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Samadhi Buddha Statue ⭐<a class="map-link" href="https://maps.google.com/?cid=6763999963685583204" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">The most serene Buddha in Sri Lanka — carved from a single block of dolomite marble. Morning light is perfect here. 600m south of Abhayagiri. <em>45 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">10:15 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Ranmasu Uyana (Royal Park)<a class="map-link" href="https://maps.google.com/?cid=393048715741896349" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Ancient 40-acre royal pleasure garden with advanced water engineering. Don't miss the mysterious Sakwala Chakraya star gate carving at the back. <em>60 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">12:00 PM</span></div>
+        <div class="dot-col"><div class="dot food"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Lunch <span class="stop-type">Local Restaurant</span></div>
+          <div class="food-card">
+            <span>🍛</span>
+            <span class="restaurant-name">Little Paradise Restaurant</span>
+            <span class="rating">★ 4.8 &nbsp;·&nbsp; Traditional Rice &amp; Curry &nbsp;·&nbsp; Open 8 AM–9:30 PM</span>
+          </div>
+          <div class="stop-note" style="margin-top:5px;">Best traditional Sri Lankan meal in Anuradhapura. Set menu in a peaceful garden guesthouse. <em>45 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">1:15 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Jetavanaramaya (Museum)<a class="map-link" href="https://maps.google.com/?cid=2654747111679834075" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Explore the on-site museum with incredible excavated artefacts from this once 120m-tall stupa. <em>60 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">5:00 PM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Ruwanweli Maha Seya — Evening Visit ⭐⭐<a class="map-link" href="https://maps.google.com/?cid=17587394628202489997" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Return for the evening experience. The stupa is softly lit at dusk with chanting and incense. One of the most magical sights in Sri Lanka — absolutely do not miss this. <em>60 min.</em></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="highlight-bar">
+      <span class="hl-icon">🌅</span>
+      <span>The <strong>evening Ruwanweli</strong> visit at 5 PM is one of the most unforgettable experiences of the entire trip. Plan your day around it.</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════ DAY 3 ══════════════════ -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number-block">
+        <span class="day-num">Day</span>
+        <span class="day-num-big">03</span>
+      </div>
+      <div class="day-title-block">
+        <div class="day-title">Travel to Polonnaruwa</div>
+        <div class="day-hotel">🏨 <span>Hotel Sudu Araliya</span> · Check-in 2:00 PM</div>
+      </div>
+    </div>
+
+    <!-- DAY 3 ROUTE -->
+    <div class="route-bar">
+      <div class="route-label">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+        Afternoon Route (Polonnaruwa)
+        <span class="mode-badge">🚗 Driving</span>
+      </div>
+      <div class="route-stops">
+        <span>🗿 King Parakrama Statue</span><span class="arrow">→</span>
+        <span>📚 Pothgul Viharaya</span><span class="arrow">→</span>
+        <span>🍛 HWA HWA (Lunch)</span><span class="arrow">→</span>
+        <span>🏨 Hotel Sudu Araliya</span><span class="arrow">→</span>
+        <span>🌊 Parakrama Samudra</span>
+      </div>
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Statue+of+King+Parakramabahu&origin_place_id=ChIJuSZOxclE-zoRCSE2PyU6e1E&destination=Parakrama+Samudra&destination_place_id=ChIJzfrR68Va-zoRQ71LzPh5ZyM&waypoints=Pothgul+Viharaya|HWA+HWA+Eating+House|Hotel+Sudu+Araliya&waypoints_place_ids=ChIJpUXQpslE-zoRSdujdphHRyk|ChIJn9BZeu9F-zoRLCKMj1UXqIs|ChIJ87b8KspE-zoRA7Ox5C2jCl8&travelmode=driving" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">7:30 AM</span></div>
+        <div class="dot-col"><div class="dot hotel"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Miridiya Lake Resort — Check-out<a class="map-link" href="https://maps.google.com/?cid=8441911168785298503" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Settle bill after breakfast. Arrange tuk-tuk to the bus station.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">8:00 AM</span></div>
+        <div class="dot-col"><div class="dot travel"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Bus to Polonnaruwa 🚌 <span class="stop-type">~3 hrs</span></div>
+          <div class="stop-note">CTB or private bus via Habarana. Sit on the right side for views. Buy snacks for the journey. Arrive approximately 11:00–11:30 AM.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">11:30 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Statue of King Parakramabahu<a class="map-link" href="https://maps.google.com/?cid=5871350470856286473" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Drop bags at hotel (request early luggage drop), then head here — just steps away. The iconic 12th-century rock-cut statue beside Parakrama Samudraya. <em>30 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">12:10 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Pothgul Viharaya<a class="map-link" href="https://maps.google.com/?cid=2974424799052553033" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">2-min walk from the statue. Unique circular library complex — fascinating ancient architecture. <em>30 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">12:45 PM</span></div>
+        <div class="dot-col"><div class="dot food"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Lunch <span class="stop-type">Local Restaurant</span></div>
+          <div class="food-card">
+            <span>🍛</span>
+            <span class="restaurant-name">HWA HWA Eating House</span>
+            <span class="rating">★ 4.8 &nbsp;·&nbsp; Sri Lankan Buffet &amp; Kottu &nbsp;·&nbsp; Open 10:30 AM–10:30 PM</span>
+          </div>
+          <div class="stop-note" style="margin-top:5px;">Right near the ancient city entrance. Fresh buffet in clay pots, devilled chicken, fresh juices. Air-conditioned. <em>45 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">2:00 PM</span></div>
+        <div class="dot-col"><div class="dot hotel"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Hotel Sudu Araliya — Check-in 🏨<a class="map-link" href="https://maps.google.com/?cid=6848465600875967235" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Freshen up. The hotel faces Parakrama Samudraya — enjoy the garden view before the afternoon walk.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">4:30 PM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Parakrama Samudra — Sunset Walk ⭐<a class="map-link" href="https://maps.google.com/?cid=2551141823415041347" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">The 12th-century 'Sea of Parakrama' — a 14km-long reservoir. Walk the bund. Spectacular golden sunset reflected on the water. Best photography spot of the trip. <em>90 min.</em></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="highlight-bar">
+      <span class="hl-icon">🚌</span>
+      <span>Buses run frequently between Anuradhapura and Polonnaruwa. The journey takes <strong>3–3.5 hours</strong> — a comfortable and scenic ride through the Cultural Triangle.</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════ DAY 4 ══════════════════ -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number-block">
+        <span class="day-num">Day</span>
+        <span class="day-num-big">04</span>
+      </div>
+      <div class="day-title-block">
+        <div class="day-title">Royal Palace &amp; Sacred Quadrangle</div>
+        <div class="day-hotel">🏨 <span>Hotel Sudu Araliya</span> · 🚲 Hire bicycle (300–500 LKR/day)</div>
+      </div>
+    </div>
+
+    <!-- DAY 4 ROUTE -->
+    <div class="route-bar">
+      <div class="route-label">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+        Full Day Cycling Route
+        <span class="mode-badge">🚲 Bicycle</span>
+      </div>
+      <div class="route-stops">
+        <span>🏯 Royal Palace</span><span class="arrow">→</span>
+        <span>🛁 Kumara Pokuna</span><span class="arrow">→</span>
+        <span>🪷 Nissanka</span><span class="arrow">→</span>
+        <span>✨ Vatadage</span><span class="arrow">→</span>
+        <span>🕌 Hatadage</span><span class="arrow">→</span>
+        <span>🍛 HWA HWA (Lunch)</span><span class="arrow">→</span>
+        <span>🗿 Menik Vehera</span><span class="arrow">→</span>
+        <span>💎 Pabalu Vehera</span><span class="arrow">→</span>
+        <span>🌍 Ancient City</span>
+      </div>
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Sudu+Araliya&origin_place_id=ChIJ87b8KspE-zoRA7Ox5C2jCl8&destination=Polonnaruwa+Ancient+City&destination_place_id=ChIJyaTlBW5F-zoRqdDUqf4czXI&waypoints=Royal+Palace+of+King+Parakramabahu|Kumara+Pokuna|Nissanka+Latha+Mandapaya|Vatadage|Hetadage|HWA+HWA+Eating+House|Menik+Vehera|Pabalu+Vehera&waypoints_place_ids=ChIJqecfzaVE-zoR9AznZUy4gkQ|ChIJyY4mPqRE-zoRJGpWgFoaHpE|ChIJbWT2dKdE-zoR8MlCn2PF4hE|ChIJ1chUc6dE-zoRQS6zggWXGEg|ChIJIVf2dKdE-zoRa9ZDv0OvtiA|ChIJn9BZeu9F-zoRLCKMj1UXqIs|ChIJQyWhQVlD-zoRu3ijJmeWvDs|ChIJxSDdT19D-zoRJMK_tgntM0o&travelmode=bicycling" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">8:00 AM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Royal Palace of King Parakramabahu ⭐<a class="map-link" href="https://maps.google.com/?cid=4936710779818151156" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Once 7 storeys tall with 1,000 chambers. Arrive at opening time (8 AM) for fewer crowds. The scale of the remaining brick walls is extraordinary. <em>50 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">9:00 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Kumara Pokuna (Royal Bath)<a class="map-link" href="https://maps.google.com/?cid=10456824360803396132" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">3-min walk south. Royal bathing pond with carved lion heads. Built below palace level so water flows naturally by gravity. <em>30 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">9:40 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Nissanka Latha Mandapaya<a class="map-link" href="https://maps.google.com/?cid=1288809475045771760" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">The king's pirith-chanting pavilion — famous for its unique lotus-stalk curved granite pillars. Unlike anything else in Sri Lanka. <em>30 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">10:20 AM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Vatadage ⭐⭐<a class="map-link" href="https://maps.google.com/?cid=5195068220095278657" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">The most exquisite circular relic house in Sri Lanka. Study each of the 4 carved entrances carefully. The stonework is remarkable. Allow extra time here. <em>50 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">11:20 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Hetadage (Hatadage)</div>
+          <div class="stop-note">Right beside Vatadage in the Sacred Quadrangle. Tooth Relic shrine with standing Buddhas still in place. <em>30 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">12:00 PM</span></div>
+        <div class="dot-col"><div class="dot food"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Lunch <span class="stop-type">Local Restaurant</span></div>
+          <div class="food-card">
+            <span>🍛</span>
+            <span class="restaurant-name">HWA HWA Eating House</span>
+            <span class="rating">★ 4.8 &nbsp;·&nbsp; 5-min bicycle ride from Sacred Quadrangle</span>
+          </div>
+          <div class="stop-note" style="margin-top:5px;"><em>45 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">1:00 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Menik Vehera</div>
+          <div class="stop-note">Oldest stupa in Polonnaruwa with unique lion relief carvings. Often quiet and uncrowded. <em>40 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">1:50 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Pabalu Vehera</div>
+          <div class="stop-note">Named after glass beads found during excavations. Built by Queen Rupavati, consort of King Parakramabahu. <em>40 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">2:40 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Polonnaruwa Ancient City — UNESCO Zone</div>
+          <div class="stop-note">Cycle through the main archaeological zone. Well-maintained paths between temple clusters. Keep your entry ticket — it's checked at multiple points. <em>60 min.</em></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="highlight-bar">
+      <span class="hl-icon">🚲</span>
+      <span>A <strong>bicycle</strong> is the best way to explore Polonnaruwa. Flat terrain, great paths, and you can stop anywhere. Rent from outside the hotel for 300–500 LKR/day.</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════ DAY 5 ══════════════════ -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-number-block">
+        <span class="day-num">Day</span>
+        <span class="day-num-big">05</span>
+      </div>
+      <div class="day-title-block">
+        <div class="day-title">Northern Temples &amp; Farewell Sunset</div>
+        <div class="day-hotel">🏨 <span>Hotel Sudu Araliya</span> · 🚲 Continue on bicycle</div>
+      </div>
+    </div>
+
+    <!-- DAY 5 ROUTE -->
+    <div class="route-bar">
+      <div class="route-label">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+        Full Day Cycling Route
+        <span class="mode-badge">🚲 Bicycle</span>
+      </div>
+      <div class="route-stops">
+        <span>🏛️ Lankathilaka</span><span class="arrow">→</span>
+        <span>✨ Gal Viharaya</span><span class="arrow">→</span>
+        <span>🎨 Thivanka</span><span class="arrow">→</span>
+        <span>🍛 Silver Line (Lunch)</span><span class="arrow">→</span>
+        <span>🏨 Hotel</span><span class="arrow">→</span>
+        <span>🌅 Parakrama Samudra</span>
+      </div>
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Sudu+Araliya&origin_place_id=ChIJ87b8KspE-zoRA7Ox5C2jCl8&destination=Parakrama+Samudra&destination_place_id=ChIJzfrR68Va-zoRQ71LzPh5ZyM&waypoints=Lankatilaka+Temple|Gal+Viharaya|Thivanka+Image+House|Silver+Line+Restaurant|Hotel+Sudu+Araliya&waypoints_place_ids=ChIJXS_7eURD-zoRcifq5-EHg60|ChIJtVuOQUFD-zoRdUP0Kifwctc|ChIJlW7V-DxD-zoRTRnxn3pYSG8|ChIJ-4-eosxD-zoRNs8Fht1waZ8|ChIJ87b8KspE-zoRA7Ox5C2jCl8&travelmode=bicycling" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">8:00 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Lankatilaka Temple</div>
+          <div class="stop-note">A towering image house with a 41-foot headless standing Buddha framed by massive brick walls. One of the most striking sights in Polonnaruwa. <em>60 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">9:15 AM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Gal Viharaya ⭐⭐⭐</div>
+          <div class="stop-note">The absolute crown jewel of Polonnaruwa. Four colossal Buddhas carved from a single granite face. Arrive before 10 AM to beat tour groups. <strong>Note:</strong> No selfies with the Buddha — strictly enforced by guards. <em>90 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">11:00 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Thivanka Image House</div>
+          <div class="stop-note">Finest surviving Polonnaruwa-era frescoes inside. The triple-bent Buddha pose ('Thivanka') is unique in Sri Lankan art. No flash photography. <em>60 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">12:15 PM</span></div>
+        <div class="dot-col"><div class="dot food"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Lunch <span class="stop-type">Local Restaurant</span></div>
+          <div class="food-card">
+            <span>🍛</span>
+            <span class="restaurant-name">Silver Line Restaurant</span>
+            <span class="rating">★ 4.8 &nbsp;·&nbsp; Fresh Clay-Pot Dishes &nbsp;·&nbsp; Open 11 AM–6 PM</span>
+          </div>
+          <div class="stop-note" style="margin-top:5px;">Market-to-table experience with beautiful surroundings. Highly recommended for vegetarians too. <em>45 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">1:30 PM</span></div>
+        <div class="dot-col"><div class="dot hotel"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Hotel Sudu Araliya — Rest &amp; Pool 🏊</div>
+          <div class="stop-note">Well-deserved afternoon rest. Enjoy the hotel pool overlooking the great lake.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">4:30 PM</span></div>
+        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="content-col">
+          <div class="stop-name">Parakrama Samudra — Farewell Sunset ⭐</div>
+          <div class="stop-note">One final walk along the ancient 12th-century reservoir. Watch for elephants coming to drink at dusk. The golden light on the water is the perfect end to this extraordinary journey. <em>90 min.</em></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="highlight-bar">
+      <span class="hl-icon">✨</span>
+      <span><strong>Gal Viharaya</strong> is the single most impressive archaeological sight of the entire trip. Give it at least 90 minutes and arrive early for the best experience.</span>
+    </div>
+  </div>
+
+  <div class="ornament-divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <!-- RESTAURANT TABLE -->
+  <div class="restaurant-section">
+    <div class="section-header" style="padding-top:0;">
+      <span class="section-tag">Where to Eat</span>
+      <h2 class="section-title">Lunch Restaurants by Day</h2>
+    </div>
+    <table class="rest-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Restaurant</th>
+          <th>Rating</th>
+          <th>Cuisine &amp; Notes</th>
+          <th>Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="day-badge">DAY 1</span></td>
+          <td class="rest-name">Sorriso Restaurant</td>
+          <td class="stars">★ 4.8</td>
+          <td>Sri Lankan buffet. Unique outdoor setting built around a tree. Fresh juices.</td>
+          <td>7:30 AM – 10 PM</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">DAY 2</span></td>
+          <td class="rest-name">Little Paradise Restaurant</td>
+          <td class="stars">★ 4.8</td>
+          <td>Traditional rice & curry set menu. Garden guesthouse setting. Best meal in Anuradhapura.</td>
+          <td>8:00 AM – 9:30 PM</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">DAY 3</span></td>
+          <td class="rest-name">HWA HWA Eating House</td>
+          <td class="stars">★ 4.8</td>
+          <td>Sri Lankan buffet + kottu + devilled chicken. Air-conditioned. Near ruins entrance.</td>
+          <td>10:30 AM – 10:30 PM</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">DAY 4</span></td>
+          <td class="rest-name">HWA HWA Eating House</td>
+          <td class="stars">★ 4.8</td>
+          <td>Same restaurant — 5 min bicycle ride from the Sacred Quadrangle.</td>
+          <td>10:30 AM – 10:30 PM</td>
+        </tr>
+        <tr>
+          <td><span class="day-badge">DAY 5</span></td>
+          <td class="rest-name">Silver Line Restaurant</td>
+          <td class="stars">★ 4.8</td>
+          <td>Fresh dishes served in clay pots. Market-to-table. Great for vegetarians.</td>
+          <td>11:00 AM – 6 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-section">
+    <div class="section-header" style="padding-top:0;">
+      <span class="section-tag">Practical Advice</span>
+      <h2 class="section-title">Essential Travel Tips</h2>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🎫</div>
+        <div>
+          <div class="tip-title">UNESCO Ticket</div>
+          <div class="tip-text">Buy the Cultural Triangle ticket at your first site — it covers both Anuradhapura and Polonnaruwa and saves significant money.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">👘</div>
+        <div>
+          <div class="tip-title">Dress Code</div>
+          <div class="tip-text">Shoulders and knees must be covered at all temples. Carry a sarong as backup. Remove shoes at most sacred sites.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🛺</div>
+        <div>
+          <div class="tip-title">Transport Tips</div>
+          <div class="tip-text">Anuradhapura: negotiate a full-day tuk-tuk rate (2,500–3,500 LKR). Polonnaruwa: rent a bicycle (300–500 LKR/day) — far better for the flat terrain.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">☀️</div>
+        <div>
+          <div class="tip-title">Beat the Heat</div>
+          <div class="tip-text">Start mornings early (7–8 AM) and plan for the 12–2 PM heat. Carry water at all times and wear light, breathable clothing.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📸</div>
+        <div>
+          <div class="tip-title">Photography</div>
+          <div class="tip-text">No selfies with Buddha statues — it is strictly enforced. No flash photography inside Thivanka Image House. Evening Ruwanweli is spectacular for photos.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">💰</div>
+        <div>
+          <div class="tip-title">Budget Guide</div>
+          <div class="tip-text">Tuk-tuk full day: 2,500–3,500 LKR. Bicycle: 300–500 LKR. Local lunch: 500–1,200 LKR. Entry tickets: covered by UNESCO pass.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-title">Sri Lanka Heritage Trail</div>
+  <p>Anuradhapura · Polonnaruwa &nbsp;|&nbsp; 5 Days · 23 Sites · 2 UNESCO World Heritage Cities</p>
+  <p style="margin-top:8px; opacity:0.5; font-size:10.5px;">Breakfast &amp; dinner at hotel · Lunch at local restaurants · Bicycle recommended for Polonnaruwa</p>
+</footer>
+
+</body>
+</html>
