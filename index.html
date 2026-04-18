@@ -263,6 +263,7 @@
   /* ── TIMELINE ── */
   .timeline {
     padding: 24px 28px 20px;
+    counter-reset: stop-num;
   }
 
   .timeline-item {
@@ -270,13 +271,14 @@
     gap: 16px;
     padding-bottom: 20px;
     position: relative;
+    counter-increment: stop-num;
   }
 
   .timeline-item:not(:last-child)::after {
     content: '';
     position: absolute;
-    left: 39px;
-    top: 32px;
+    left: 87px;
+    top: 28px;
     bottom: 0;
     width: 1px;
     background: var(--stone-dark);
@@ -298,27 +300,38 @@
   }
 
   .dot-col {
-    width: 18px;
+    width: 22px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 4px;
+    padding-top: 2px;
   }
 
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     border: 2px solid var(--stone-dark);
     background: var(--warm-white);
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    color: var(--deep);
   }
 
-  .dot.hotel { border-color: var(--jungle); background: var(--jungle); }
-  .dot.food  { border-color: var(--terracotta); background: var(--terracotta); }
-  .dot.star  { border-color: var(--gold); background: var(--gold); }
-  .dot.travel { border-color: var(--deep); background: var(--deep); }
+  .dot::before {
+    content: counter(stop-num);
+  }
+
+  .dot.hotel { border-color: var(--jungle); background: var(--jungle); color: white; }
+  .dot.food  { border-color: var(--terracotta); background: var(--terracotta); color: white; }
+  .dot.star  { border-color: var(--gold); background: var(--gold); color: var(--deep); }
+  .dot.travel { border-color: var(--deep); background: var(--deep); color: white; }
 
   .content-col {
     flex: 1;
@@ -534,10 +547,42 @@
     line-height: 1.4;
   }
 
+  .stop-seq {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--deep);
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 700;
+    margin-right: 5px;
+    flex-shrink: 0;
+    vertical-align: middle;
+    font-family: 'Cinzel', serif;
+  }
+
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: var(--jungle);
+    color: white;
+    font-size: 9.5px;
+    font-weight: 600;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
   .route-stops span {
     display: inline-flex;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
   }
 
   .route-stops .arrow {
@@ -642,6 +687,7 @@
     .timeline { padding: 18px 16px 14px; }
     .time-col { width: 48px; }
     .time-badge { font-size: 9.5px; }
+    .timeline-item:not(:last-child)::after { left: 75px; }
   }
 </style>
 </head>
@@ -712,17 +758,17 @@
         <span class="mode-badge">🚗 Driving</span>
       </div>
       <div class="route-stops">
-        <span>🚂 Railway Station</span><span class="arrow">→</span>
-        <span>🌳 Bodhi Tree</span><span class="arrow">→</span>
-        <span>🏛️ Lovamahapaya</span><span class="arrow">→</span>
-        <span>⚪ Ruwanweli</span><span class="arrow">→</span>
-        <span>🍛 Sorriso (Lunch)</span><span class="arrow">→</span>
-        <span>🏯 Thuparamaya</span><span class="arrow">→</span>
-        <span>🏨 Hotel</span><span class="arrow">→</span>
-        <span>🧱 Jetavanaramaya</span><span class="arrow">→</span>
-        <span>🌅 Mirisawetiya</span>
+        <span><span class="stop-num">1</span>🚂 Railway Station</span><span class="arrow">→</span>
+        <span><span class="stop-num">2</span>🌳 Bodhi Tree</span><span class="arrow">→</span>
+        <span><span class="stop-num">3</span>🏛️ Lovamahapaya</span><span class="arrow">→</span>
+        <span><span class="stop-num">4</span>⚪ Ruwanweli</span><span class="arrow">→</span>
+        <span><span class="stop-num">5</span>🏯 Thuparamaya</span><span class="arrow">→</span>
+        <span><span class="stop-num">6</span>🍛 Sorriso (Lunch)</span><span class="arrow">→</span>
+        <span><span class="stop-num">7</span>🏨 Hotel</span><span class="arrow">→</span>
+        <span><span class="stop-num">8</span>🧱 Jetavanaramaya</span><span class="arrow">→</span>
+        <span><span class="stop-num">9</span>🌅 Mirisawetiya</span>
       </div>
-      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Anuradhapura+Railway+Station&origin_place_id=ChIJNbBYmAr1_DoRbO7TJGlVA2E&destination=Mirisawetiya+Stupa&destination_place_id=ChIJIzDH47_1_DoRm-fBnm8TvJ0&waypoints=Jaya+Sri+Maha+Bodhi|Lovamahapaya|Ruwanweli+Maha+Seya|Sorriso+Restaurant|Thuparamaya|Miridiya+Lake+Resort|Jetavanaramaya&waypoints_place_ids=ChIJfbxYZb31_DoRVO6nFKyDpl4|ChIJM_DxPAD1_DoRwtSPPfFZ3Nc|ChIJQRJv0Zb1_DoRjWifejv6EvQ|ChIJUUsQYwD1_DoRpkuK9wz_yp4|ChIJHU05dJf1_DoRHUJt23YkCbM|ChIJZbXnLb71_DoRR7TZGHuxJ3U|ChIJr-Eu5pv1_DoR27crwG6O1yQ&travelmode=driving" target="_blank">
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Anuradhapura+Railway+Station&origin_place_id=ChIJNbBYmAr1_DoRbO7TJGlVA2E&destination=Mirisawetiya+Stupa&destination_place_id=ChIJIzDH47_1_DoRm-fBnm8TvJ0&waypoints=Jaya+Sri+Maha+Bodhi%7CLovamahapaya+Anuradhapura%7CRuwanweli+Maha+Seya%7CThuparamaya+Anuradhapura%7CSorriso+Restaurant+Anuradhapura%7CMiridiya+Lake+Resort+Anuradhapura%7CJetavanaramaya+Anuradhapura&travelmode=driving" target="_blank">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Open in Google Maps
       </a>
@@ -734,7 +780,7 @@
         <div class="time-col"><span class="time-badge">10:00 AM</span></div>
         <div class="dot-col"><div class="dot travel"></div></div>
         <div class="content-col">
-          <div class="stop-name">Anuradhapura Railway Station <span class="stop-type">Arrival</span><a class="map-link" href="https://maps.google.com/?cid=6990524956686937708" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">1</span>Anuradhapura Railway Station <span class="stop-type">Arrival</span><a class="map-link" href="https://maps.google.com/?cid=6990524956686937708" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Store luggage at the station cloakroom. Hire a tuk-tuk outside and negotiate a full-day rate (≈ 2,500–3,500 LKR). Head straight to the ancient city.</div>
         </div>
       </div>
@@ -743,7 +789,7 @@
         <div class="time-col"><span class="time-badge">10:20 AM</span></div>
         <div class="dot-col"><div class="dot star"></div></div>
         <div class="content-col">
-          <div class="stop-name">Jaya Sri Maha Bodhi ⭐<a class="map-link" href="https://maps.google.com/?cid=6820283460803358292" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">2</span>Jaya Sri Maha Bodhi ⭐<a class="map-link" href="https://maps.google.com/?cid=6820283460803358292" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">World's oldest documented sacred tree (288 BC). Remove shoes at the counter outside. Calm and spiritually powerful mid-morning. <em>45 min.</em></div>
         </div>
       </div>
@@ -752,7 +798,7 @@
         <div class="time-col"><span class="time-badge">11:10 AM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Lovamahapaya (Brazen Palace)<a class="map-link" href="https://maps.google.com/?cid=15554406105685677250" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">3</span>Lovamahapaya (Brazen Palace)<a class="map-link" href="https://maps.google.com/?cid=15554406105685677250" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">2-min walk from Bodhi Tree. 1,600 ancient stone pillars of a once 9-storey palace. Quick but impressive. <em>20 min.</em></div>
         </div>
       </div>
@@ -761,39 +807,39 @@
         <div class="time-col"><span class="time-badge">11:35 AM</span></div>
         <div class="dot-col"><div class="dot star"></div></div>
         <div class="content-col">
-          <div class="stop-name">Ruwanweli Maha Seya ⭐<a class="map-link" href="https://maps.google.com/?cid=17587394628202489997" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">4</span>Ruwanweli Maha Seya ⭐<a class="map-link" href="https://maps.google.com/?cid=17587394628202489997" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Sri Lanka's most iconic white stupa. Walk the full perimeter — don't miss the elephant wall at the base. Brilliant in midday light. <em>55 min.</em></div>
         </div>
       </div>
 
       <div class="timeline-item">
         <div class="time-col"><span class="time-badge">12:45 PM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name"><span class="stop-seq">5</span>Thuparamaya<a class="map-link" href="https://maps.google.com/?cid=12900882700485607965" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Sri Lanka's oldest stupa — all 4 temples are now done in one compact north cluster walk. Unique concentric stone pillars. <em>30 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">1:30 PM</span></div>
         <div class="dot-col"><div class="dot food"></div></div>
         <div class="content-col">
-          <div class="stop-name">Lunch <span class="stop-type">Local Restaurant</span></div>
+          <div class="stop-name"><span class="stop-seq">6</span>Lunch <span class="stop-type">Local Restaurant</span></div>
           <div class="food-card">
             <span>🍛</span>
             <span class="restaurant-name">Sorriso Restaurant</span>
             <span class="rating">★ 4.8 &nbsp;·&nbsp; Sri Lankan Buffet &nbsp;·&nbsp; Open 7:30 AM–10 PM</span>
           </div>
-          <div class="stop-note" style="margin-top:5px;">Delicious rice & curry buffet with fresh juices. Unique outdoor setting built around a tree. <em>45 min.</em></div>
+          <div class="stop-note" style="margin-top:5px;">Head south from Thuparamaya — Sorriso is on the direct route to the hotel. Delicious rice & curry buffet. <em>45 min.</em></div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">1:45 PM</span></div>
-        <div class="dot-col"><div class="dot"></div></div>
-        <div class="content-col">
-          <div class="stop-name">Thuparamaya<a class="map-link" href="https://maps.google.com/?cid=12900882700485607965" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
-          <div class="stop-note">Sri Lanka's oldest stupa. Quieter and more peaceful than the main sites. Unique concentric stone pillars. <em>30 min.</em></div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">2:15 PM</span></div>
+        <div class="time-col"><span class="time-badge">2:30 PM</span></div>
         <div class="dot-col"><div class="dot hotel"></div></div>
         <div class="content-col">
-          <div class="stop-name">Miridiya Lake Resort — Check-in 🏨<a class="map-link" href="https://maps.google.com/?cid=8441911168785298503" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">7</span>Miridiya Lake Resort — Check-in 🏨<a class="map-link" href="https://maps.google.com/?cid=8441911168785298503" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Drop bags, freshen up. Collect tuk-tuk for the afternoon session.</div>
         </div>
       </div>
@@ -802,7 +848,7 @@
         <div class="time-col"><span class="time-badge">3:30 PM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Jetavanaramaya<a class="map-link" href="https://maps.google.com/?cid=2654747111679834075" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">8</span>Jetavanaramaya<a class="map-link" href="https://maps.google.com/?cid=2654747111679834075" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">One of the world's tallest ancient brick structures. Glows beautifully in afternoon light. <em>50 min.</em></div>
         </div>
       </div>
@@ -811,7 +857,7 @@
         <div class="time-col"><span class="time-badge">4:30 PM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Mirisawetiya Stupa<a class="map-link" href="https://maps.google.com/?cid=11365980929702094747" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">9</span>Mirisawetiya Stupa<a class="map-link" href="https://maps.google.com/?cid=11365980929702094747" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Peaceful lakeside stupa near Tissa Wewa. Built by King Dutugemunu. Close to hotel — easy return for dinner. <em>45 min.</em></div>
         </div>
       </div>
@@ -844,14 +890,14 @@
         <span class="mode-badge">🚗 Driving</span>
       </div>
       <div class="route-stops">
-        <span>🏛️ Abhayagiri</span><span class="arrow">→</span>
-        <span>🧘 Samadhi Statue</span><span class="arrow">→</span>
-        <span>🌿 Ranmasu Uyana</span><span class="arrow">→</span>
-        <span>🍛 Little Paradise (Lunch)</span><span class="arrow">→</span>
-        <span>🧱 Jetavanaramaya</span><span class="arrow">→</span>
-        <span>🌇 Ruwanweli (Evening)</span>
+        <span><span class="stop-num">1</span>🌿 Ranmasu Uyana</span><span class="arrow">→</span>
+        <span><span class="stop-num">2</span>🏛️ Abhayagiri</span><span class="arrow">→</span>
+        <span><span class="stop-num">3</span>🧘 Samadhi Statue</span><span class="arrow">→</span>
+        <span><span class="stop-num">4</span>🧱 Jetavanaramaya</span><span class="arrow">→</span>
+        <span><span class="stop-num">5</span>🍛 Little Paradise (Lunch)</span><span class="arrow">→</span>
+        <span><span class="stop-num">6</span>🌇 Ruwanweli (Evening)</span>
       </div>
-      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Miridiya+Lake+Resort&origin_place_id=ChIJZbXnLb71_DoRR7TZGHuxJ3U&destination=Ruwanweli+Maha+Seya&destination_place_id=ChIJQRJv0Zb1_DoRjWifejv6EvQ&waypoints=Abhayagiriya|Samadhi+Buddha+Statue|Ranmasu+Uyana|Little+Paradise+Restaurant|Jetavanaramaya&waypoints_place_ids=ChIJtfdplWNf_DoRp8dlDcpuhfI|ChIJNzvIIGNf_DoRZPk7OCGO3l0|ChIJ0Rk4lbj1_DoRnR44ebljdAU|ChIJ2TaMWlX0_DoR0EDppWINbdM|ChIJr-Eu5pv1_DoR27crwG6O1yQ&travelmode=driving" target="_blank">
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Miridiya+Lake+Resort+Anuradhapura&origin_place_id=ChIJZbXnLb71_DoRR7TZGHuxJ3U&destination=Ruwanweli+Maha+Seya&destination_place_id=ChIJQRJv0Zb1_DoRjWifejv6EvQ&waypoints=Ranmasu+Uyana+Anuradhapura%7CAbhayagiriya+Anuradhapura%7CSamadhi+Buddha+Statue+Anuradhapura%7CJetavanaramaya+Anuradhapura%7CLittle+Paradise+Restaurant+Anuradhapura&travelmode=driving" target="_blank">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Open in Google Maps
       </a>
@@ -860,52 +906,52 @@
     <div class="timeline">
 
       <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">8:00 AM</span></div>
+        <div class="time-col"><span class="time-badge">7:45 AM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Abhayagiriya Dagoba<a class="map-link" href="https://maps.google.com/?cid=17475495743168300967" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
-          <div class="stop-note">Arrive early while it's cool. Sri Lanka's 2nd largest stupa. The on-site museum has incredible excavated artefacts. <em>60 min.</em></div>
+          <div class="stop-name"><span class="stop-seq">1</span>Ranmasu Uyana (Royal Park)<a class="map-link" href="https://maps.google.com/?cid=393048715741896349" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Start here — only 0.9 km from the hotel. Ancient 40-acre royal pleasure garden. Don't miss the mysterious Sakwala Chakraya star gate carving at the back. <em>60 min.</em></div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">9:15 AM</span></div>
-        <div class="dot-col"><div class="dot star"></div></div>
+        <div class="time-col"><span class="time-badge">9:00 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Samadhi Buddha Statue ⭐<a class="map-link" href="https://maps.google.com/?cid=6763999963685583204" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
-          <div class="stop-note">The most serene Buddha in Sri Lanka — carved from a single block of dolomite marble. Morning light is perfect here. 600m south of Abhayagiri. <em>45 min.</em></div>
+          <div class="stop-name"><span class="stop-seq">2</span>Abhayagiriya Dagoba<a class="map-link" href="https://maps.google.com/?cid=17475495743168300967" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Head north — Sri Lanka's 2nd largest stupa. The on-site museum has incredible excavated artefacts. <em>60 min.</em></div>
         </div>
       </div>
 
       <div class="timeline-item">
         <div class="time-col"><span class="time-badge">10:15 AM</span></div>
-        <div class="dot-col"><div class="dot"></div></div>
+        <div class="dot-col"><div class="dot star"></div></div>
         <div class="content-col">
-          <div class="stop-name">Ranmasu Uyana (Royal Park)<a class="map-link" href="https://maps.google.com/?cid=393048715741896349" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
-          <div class="stop-note">Ancient 40-acre royal pleasure garden with advanced water engineering. Don't miss the mysterious Sakwala Chakraya star gate carving at the back. <em>60 min.</em></div>
+          <div class="stop-name"><span class="stop-seq">3</span>Samadhi Buddha Statue ⭐<a class="map-link" href="https://maps.google.com/?cid=6763999963685583204" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">600m south of Abhayagiri. The most serene Buddha in Sri Lanka — carved from a single block of dolomite marble. <em>45 min.</em></div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">12:00 PM</span></div>
+        <div class="time-col"><span class="time-badge">11:15 AM</span></div>
+        <div class="dot-col"><div class="dot"></div></div>
+        <div class="content-col">
+          <div class="stop-name"><span class="stop-seq">4</span>Jetavanaramaya (Museum)<a class="map-link" href="https://maps.google.com/?cid=2654747111679834075" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Head south — on-site museum with incredible excavated artefacts from this once 120m-tall stupa. <em>60 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">12:30 PM</span></div>
         <div class="dot-col"><div class="dot food"></div></div>
         <div class="content-col">
-          <div class="stop-name">Lunch <span class="stop-type">Local Restaurant</span></div>
+          <div class="stop-name"><span class="stop-seq">5</span>Lunch <span class="stop-type">Local Restaurant</span></div>
           <div class="food-card">
             <span>🍛</span>
             <span class="restaurant-name">Little Paradise Restaurant</span>
             <span class="rating">★ 4.8 &nbsp;·&nbsp; Traditional Rice &amp; Curry &nbsp;·&nbsp; Open 8 AM–9:30 PM</span>
           </div>
-          <div class="stop-note" style="margin-top:5px;">Best traditional Sri Lankan meal in Anuradhapura. Set menu in a peaceful garden guesthouse. <em>45 min.</em></div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">1:15 PM</span></div>
-        <div class="dot-col"><div class="dot"></div></div>
-        <div class="content-col">
-          <div class="stop-name">Jetavanaramaya (Museum)<a class="map-link" href="https://maps.google.com/?cid=2654747111679834075" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
-          <div class="stop-note">Explore the on-site museum with incredible excavated artefacts from this once 120m-tall stupa. <em>60 min.</em></div>
+          <div class="stop-note" style="margin-top:5px;">Continue south from Jetavanaramaya — Little Paradise is on the direct route back to the hotel. Best traditional Sri Lankan meal in Anuradhapura. <em>45 min.</em></div>
         </div>
       </div>
 
@@ -913,7 +959,7 @@
         <div class="time-col"><span class="time-badge">5:00 PM</span></div>
         <div class="dot-col"><div class="dot star"></div></div>
         <div class="content-col">
-          <div class="stop-name">Ruwanweli Maha Seya — Evening Visit ⭐⭐<a class="map-link" href="https://maps.google.com/?cid=17587394628202489997" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">6</span>Ruwanweli Maha Seya — Evening Visit ⭐⭐<a class="map-link" href="https://maps.google.com/?cid=17587394628202489997" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Return for the evening experience. The stupa is softly lit at dusk with chanting and incense. One of the most magical sights in Sri Lanka — absolutely do not miss this. <em>60 min.</em></div>
         </div>
       </div>
@@ -946,13 +992,13 @@
         <span class="mode-badge">🚗 Driving</span>
       </div>
       <div class="route-stops">
-        <span>🗿 King Parakrama Statue</span><span class="arrow">→</span>
-        <span>📚 Pothgul Viharaya</span><span class="arrow">→</span>
-        <span>🍛 HWA HWA (Lunch)</span><span class="arrow">→</span>
-        <span>🏨 Hotel Sudu Araliya</span><span class="arrow">→</span>
-        <span>🌊 Parakrama Samudra</span>
+        <span><span class="stop-num">1</span>🗿 King Parakrama Statue</span><span class="arrow">→</span>
+        <span><span class="stop-num">2</span>📚 Pothgul Viharaya</span><span class="arrow">→</span>
+        <span><span class="stop-num">3</span>🍛 HWA HWA (Lunch)</span><span class="arrow">→</span>
+        <span><span class="stop-num">4</span>🏨 Hotel Sudu Araliya</span><span class="arrow">→</span>
+        <span><span class="stop-num">5</span>🌊 Parakrama Samudra</span>
       </div>
-      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Statue+of+King+Parakramabahu&origin_place_id=ChIJuSZOxclE-zoRCSE2PyU6e1E&destination=Parakrama+Samudra&destination_place_id=ChIJzfrR68Va-zoRQ71LzPh5ZyM&waypoints=Pothgul+Viharaya|HWA+HWA+Eating+House|Hotel+Sudu+Araliya&waypoints_place_ids=ChIJpUXQpslE-zoRSdujdphHRyk|ChIJn9BZeu9F-zoRLCKMj1UXqIs|ChIJ87b8KspE-zoRA7Ox5C2jCl8&travelmode=driving" target="_blank">
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Statue+of+King+Parakramabahu+Polonnaruwa&origin_place_id=ChIJuSZOxclE-zoRCSE2PyU6e1E&destination=Parakrama+Samudra+Polonnaruwa&destination_place_id=ChIJzfrR68Va-zoRQ71LzPh5ZyM&waypoints=Pothgul+Viharaya+Polonnaruwa%7CHWA+HWA+Eating+House+Polonnaruwa%7CHotel+Sudu+Araliya+Polonnaruwa&travelmode=driving" target="_blank">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Open in Google Maps
       </a>
@@ -964,7 +1010,7 @@
         <div class="time-col"><span class="time-badge">7:30 AM</span></div>
         <div class="dot-col"><div class="dot hotel"></div></div>
         <div class="content-col">
-          <div class="stop-name">Miridiya Lake Resort — Check-out<a class="map-link" href="https://maps.google.com/?cid=8441911168785298503" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">✓</span>Miridiya Lake Resort — Check-out<a class="map-link" href="https://maps.google.com/?cid=8441911168785298503" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Settle bill after breakfast. Arrange tuk-tuk to the bus station.</div>
         </div>
       </div>
@@ -982,7 +1028,7 @@
         <div class="time-col"><span class="time-badge">11:30 AM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Statue of King Parakramabahu<a class="map-link" href="https://maps.google.com/?cid=5871350470856286473" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">1</span>Statue of King Parakramabahu<a class="map-link" href="https://maps.google.com/?cid=5871350470856286473" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Drop bags at hotel (request early luggage drop), then head here — just steps away. The iconic 12th-century rock-cut statue beside Parakrama Samudraya. <em>30 min.</em></div>
         </div>
       </div>
@@ -991,7 +1037,7 @@
         <div class="time-col"><span class="time-badge">12:10 PM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Pothgul Viharaya<a class="map-link" href="https://maps.google.com/?cid=2974424799052553033" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">2</span>Pothgul Viharaya<a class="map-link" href="https://maps.google.com/?cid=2974424799052553033" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">2-min walk from the statue. Unique circular library complex — fascinating ancient architecture. <em>30 min.</em></div>
         </div>
       </div>
@@ -1014,7 +1060,7 @@
         <div class="time-col"><span class="time-badge">2:00 PM</span></div>
         <div class="dot-col"><div class="dot hotel"></div></div>
         <div class="content-col">
-          <div class="stop-name">Hotel Sudu Araliya — Check-in 🏨<a class="map-link" href="https://maps.google.com/?cid=6848465600875967235" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">4</span>Hotel Sudu Araliya — Check-in 🏨<a class="map-link" href="https://maps.google.com/?cid=6848465600875967235" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Freshen up. The hotel faces Parakrama Samudraya — enjoy the garden view before the afternoon walk.</div>
         </div>
       </div>
@@ -1023,7 +1069,7 @@
         <div class="time-col"><span class="time-badge">4:30 PM</span></div>
         <div class="dot-col"><div class="dot star"></div></div>
         <div class="content-col">
-          <div class="stop-name">Parakrama Samudra — Sunset Walk ⭐<a class="map-link" href="https://maps.google.com/?cid=2551141823415041347" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">5</span>Parakrama Samudra — Sunset Walk ⭐<a class="map-link" href="https://maps.google.com/?cid=2551141823415041347" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">The 12th-century 'Sea of Parakrama' — a 14km-long reservoir. Walk the bund. Spectacular golden sunset reflected on the water. Best photography spot of the trip. <em>90 min.</em></div>
         </div>
       </div>
@@ -1056,17 +1102,17 @@
         <span class="mode-badge">🚲 Bicycle</span>
       </div>
       <div class="route-stops">
-        <span>🏯 Royal Palace</span><span class="arrow">→</span>
-        <span>🛁 Kumara Pokuna</span><span class="arrow">→</span>
-        <span>🪷 Nissanka</span><span class="arrow">→</span>
-        <span>✨ Vatadage</span><span class="arrow">→</span>
-        <span>🕌 Hatadage</span><span class="arrow">→</span>
-        <span>🍛 HWA HWA (Lunch)</span><span class="arrow">→</span>
-        <span>🗿 Menik Vehera</span><span class="arrow">→</span>
-        <span>💎 Pabalu Vehera</span><span class="arrow">→</span>
-        <span>🌍 Ancient City</span>
+        <span><span class="stop-num">1</span>🏯 Royal Palace</span><span class="arrow">→</span>
+        <span><span class="stop-num">2</span>🛁 Kumara Pokuna</span><span class="arrow">→</span>
+        <span><span class="stop-num">3</span>🪷 Nissanka</span><span class="arrow">→</span>
+        <span><span class="stop-num">4</span>✨ Vatadage</span><span class="arrow">→</span>
+        <span><span class="stop-num">5</span>🕌 Hatadage</span><span class="arrow">→</span>
+        <span><span class="stop-num">6</span>🗿 Menik Vehera</span><span class="arrow">→</span>
+        <span><span class="stop-num">7</span>💎 Pabalu Vehera</span><span class="arrow">→</span>
+        <span><span class="stop-num">8</span>🌍 Ancient City</span><span class="arrow">→</span>
+        <span><span class="stop-num">9</span>🍛 HWA HWA (Lunch)</span>
       </div>
-      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Sudu+Araliya&origin_place_id=ChIJ87b8KspE-zoRA7Ox5C2jCl8&destination=Polonnaruwa+Ancient+City&destination_place_id=ChIJyaTlBW5F-zoRqdDUqf4czXI&waypoints=Royal+Palace+of+King+Parakramabahu|Kumara+Pokuna|Nissanka+Latha+Mandapaya|Vatadage|Hetadage|HWA+HWA+Eating+House|Menik+Vehera|Pabalu+Vehera&waypoints_place_ids=ChIJqecfzaVE-zoR9AznZUy4gkQ|ChIJyY4mPqRE-zoRJGpWgFoaHpE|ChIJbWT2dKdE-zoR8MlCn2PF4hE|ChIJ1chUc6dE-zoRQS6zggWXGEg|ChIJIVf2dKdE-zoRa9ZDv0OvtiA|ChIJn9BZeu9F-zoRLCKMj1UXqIs|ChIJQyWhQVlD-zoRu3ijJmeWvDs|ChIJxSDdT19D-zoRJMK_tgntM0o&travelmode=bicycling" target="_blank">
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Sudu+Araliya+Polonnaruwa&origin_place_id=ChIJ87b8KspE-zoRA7Ox5C2jCl8&destination=HWA+HWA+Eating+House+Polonnaruwa&destination_place_id=ChIJn9BZeu9F-zoRLCKMj1UXqIs&waypoints=Royal+Palace+of+King+Parakramabahu+Polonnaruwa%7CKumara+Pokuna+Polonnaruwa%7CNissanka+Latha+Mandapaya+Polonnaruwa%7CVatadage+Polonnaruwa%7CHetadage+Polonnaruwa%7CMenik+Vehera+Polonnaruwa%7CPabalu+Vehera+Polonnaruwa%7CPolonnaruwa+Ancient+City&travelmode=bicycling" target="_blank">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Open in Google Maps
       </a>
@@ -1078,7 +1124,7 @@
         <div class="time-col"><span class="time-badge">8:00 AM</span></div>
         <div class="dot-col"><div class="dot star"></div></div>
         <div class="content-col">
-          <div class="stop-name">Royal Palace of King Parakramabahu ⭐<a class="map-link" href="https://maps.google.com/?cid=4936710779818151156" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">1</span>Royal Palace of King Parakramabahu ⭐<a class="map-link" href="https://maps.google.com/?cid=4936710779818151156" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Once 7 storeys tall with 1,000 chambers. Arrive at opening time (8 AM) for fewer crowds. The scale of the remaining brick walls is extraordinary. <em>50 min.</em></div>
         </div>
       </div>
@@ -1087,7 +1133,7 @@
         <div class="time-col"><span class="time-badge">9:00 AM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Kumara Pokuna (Royal Bath)<a class="map-link" href="https://maps.google.com/?cid=10456824360803396132" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">2</span>Kumara Pokuna (Royal Bath)<a class="map-link" href="https://maps.google.com/?cid=10456824360803396132" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">3-min walk south. Royal bathing pond with carved lion heads. Built below palace level so water flows naturally by gravity. <em>30 min.</em></div>
         </div>
       </div>
@@ -1096,7 +1142,7 @@
         <div class="time-col"><span class="time-badge">9:40 AM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Nissanka Latha Mandapaya<a class="map-link" href="https://maps.google.com/?cid=1288809475045771760" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">3</span>Nissanka Latha Mandapaya<a class="map-link" href="https://maps.google.com/?cid=1288809475045771760" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">The king's pirith-chanting pavilion — famous for its unique lotus-stalk curved granite pillars. Unlike anything else in Sri Lanka. <em>30 min.</em></div>
         </div>
       </div>
@@ -1105,7 +1151,7 @@
         <div class="time-col"><span class="time-badge">10:20 AM</span></div>
         <div class="dot-col"><div class="dot star"></div></div>
         <div class="content-col">
-          <div class="stop-name">Vatadage ⭐⭐<a class="map-link" href="https://maps.google.com/?cid=5195068220095278657" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-name"><span class="stop-seq">4</span>Vatadage ⭐⭐<a class="map-link" href="https://maps.google.com/?cid=5195068220095278657" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">The most exquisite circular relic house in Sri Lanka. Study each of the 4 carved entrances carefully. The stonework is remarkable. Allow extra time here. <em>50 min.</em></div>
         </div>
       </div>
@@ -1114,49 +1160,49 @@
         <div class="time-col"><span class="time-badge">11:20 AM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Hetadage (Hatadage)</div>
+          <div class="stop-name"><span class="stop-seq">5</span>Hetadage (Hatadage)<a class="map-link" href="https://maps.google.com/?cid=2357264160481597035" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Right beside Vatadage in the Sacred Quadrangle. Tooth Relic shrine with standing Buddhas still in place. <em>30 min.</em></div>
         </div>
       </div>
 
       <div class="timeline-item">
         <div class="time-col"><span class="time-badge">12:00 PM</span></div>
-        <div class="dot-col"><div class="dot food"></div></div>
-        <div class="content-col">
-          <div class="stop-name">Lunch <span class="stop-type">Local Restaurant</span></div>
-          <div class="food-card">
-            <span>🍛</span>
-            <span class="restaurant-name">HWA HWA Eating House</span>
-            <span class="rating">★ 4.8 &nbsp;·&nbsp; 5-min bicycle ride from Sacred Quadrangle</span>
-          </div>
-          <div class="stop-note" style="margin-top:5px;"><em>45 min.</em></div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">1:00 PM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Menik Vehera</div>
+          <div class="stop-name"><span class="stop-seq">6</span>Menik Vehera<a class="map-link" href="https://maps.google.com/?cid=4304480713633396923" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Oldest stupa in Polonnaruwa with unique lion relief carvings. Often quiet and uncrowded. <em>40 min.</em></div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">1:50 PM</span></div>
+        <div class="time-col"><span class="time-badge">12:50 PM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Pabalu Vehera</div>
+          <div class="stop-name"><span class="stop-seq">7</span>Pabalu Vehera<a class="map-link" href="https://maps.google.com/?cid=5346877808595419684" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
           <div class="stop-note">Named after glass beads found during excavations. Built by Queen Rupavati, consort of King Parakramabahu. <em>40 min.</em></div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="time-col"><span class="time-badge">2:40 PM</span></div>
+        <div class="time-col"><span class="time-badge">1:40 PM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Polonnaruwa Ancient City — UNESCO Zone</div>
-          <div class="stop-note">Cycle through the main archaeological zone. Well-maintained paths between temple clusters. Keep your entry ticket — it's checked at multiple points. <em>60 min.</em></div>
+          <div class="stop-name"><span class="stop-seq">8</span>Polonnaruwa Ancient City — UNESCO Zone<a class="map-link" href="https://maps.google.com/?cid=8272299970646036649" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Map</a></div>
+          <div class="stop-note">Cycle through the main archaeological zone. Well-maintained paths between temple clusters. Keep your entry ticket. <em>60 min.</em></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="time-col"><span class="time-badge">3:00 PM</span></div>
+        <div class="dot-col"><div class="dot food"></div></div>
+        <div class="content-col">
+          <div class="stop-name"><span class="stop-seq">9</span>Lunch <span class="stop-type">Local Restaurant</span></div>
+          <div class="food-card">
+            <span>🍛</span>
+            <span class="restaurant-name">HWA HWA Eating House</span>
+            <span class="rating">★ 4.8 &nbsp;·&nbsp; On the way back south to hotel &nbsp;·&nbsp; Open 10:30 AM–10:30 PM</span>
+          </div>
+          <div class="stop-note" style="margin-top:5px;">Now heading south back to the hotel — HWA HWA is perfectly on route. No backtracking! <em>45 min.</em></div>
         </div>
       </div>
 
@@ -1188,14 +1234,14 @@
         <span class="mode-badge">🚲 Bicycle</span>
       </div>
       <div class="route-stops">
-        <span>🏛️ Lankathilaka</span><span class="arrow">→</span>
-        <span>✨ Gal Viharaya</span><span class="arrow">→</span>
-        <span>🎨 Thivanka</span><span class="arrow">→</span>
-        <span>🍛 Silver Line (Lunch)</span><span class="arrow">→</span>
-        <span>🏨 Hotel</span><span class="arrow">→</span>
-        <span>🌅 Parakrama Samudra</span>
+        <span><span class="stop-num">1</span>🏛️ Lankathilaka</span><span class="arrow">→</span>
+        <span><span class="stop-num">2</span>✨ Gal Viharaya</span><span class="arrow">→</span>
+        <span><span class="stop-num">3</span>🎨 Thivanka</span><span class="arrow">→</span>
+        <span><span class="stop-num">4</span>🍛 Silver Line (Lunch)</span><span class="arrow">→</span>
+        <span><span class="stop-num">5</span>🏨 Hotel</span><span class="arrow">→</span>
+        <span><span class="stop-num">6</span>🌅 Parakrama Samudra</span>
       </div>
-      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Sudu+Araliya&origin_place_id=ChIJ87b8KspE-zoRA7Ox5C2jCl8&destination=Parakrama+Samudra&destination_place_id=ChIJzfrR68Va-zoRQ71LzPh5ZyM&waypoints=Lankatilaka+Temple|Gal+Viharaya|Thivanka+Image+House|Silver+Line+Restaurant|Hotel+Sudu+Araliya&waypoints_place_ids=ChIJXS_7eURD-zoRcifq5-EHg60|ChIJtVuOQUFD-zoRdUP0Kifwctc|ChIJlW7V-DxD-zoRTRnxn3pYSG8|ChIJ-4-eosxD-zoRNs8Fht1waZ8|ChIJ87b8KspE-zoRA7Ox5C2jCl8&travelmode=bicycling" target="_blank">
+      <a class="route-btn" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+Sudu+Araliya+Polonnaruwa&origin_place_id=ChIJ87b8KspE-zoRA7Ox5C2jCl8&destination=Parakrama+Samudra+Polonnaruwa&destination_place_id=ChIJzfrR68Va-zoRQ71LzPh5ZyM&waypoints=Lankatilaka+Temple+Polonnaruwa%7CGal+Viharaya+Polonnaruwa%7CThivanka+Image+House+Polonnaruwa%7CSilver+Line+Restaurant+Polonnaruwa%7CHotel+Sudu+Araliya+Polonnaruwa&travelmode=bicycling" target="_blank">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         Open in Google Maps
       </a>
@@ -1207,7 +1253,7 @@
         <div class="time-col"><span class="time-badge">8:00 AM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Lankatilaka Temple</div>
+          <div class="stop-name"><span class="stop-seq">1</span>Lankatilaka Temple</div>
           <div class="stop-note">A towering image house with a 41-foot headless standing Buddha framed by massive brick walls. One of the most striking sights in Polonnaruwa. <em>60 min.</em></div>
         </div>
       </div>
@@ -1216,7 +1262,7 @@
         <div class="time-col"><span class="time-badge">9:15 AM</span></div>
         <div class="dot-col"><div class="dot star"></div></div>
         <div class="content-col">
-          <div class="stop-name">Gal Viharaya ⭐⭐⭐</div>
+          <div class="stop-name"><span class="stop-seq">2</span>Gal Viharaya ⭐⭐⭐</div>
           <div class="stop-note">The absolute crown jewel of Polonnaruwa. Four colossal Buddhas carved from a single granite face. Arrive before 10 AM to beat tour groups. <strong>Note:</strong> No selfies with the Buddha — strictly enforced by guards. <em>90 min.</em></div>
         </div>
       </div>
@@ -1225,7 +1271,7 @@
         <div class="time-col"><span class="time-badge">11:00 AM</span></div>
         <div class="dot-col"><div class="dot"></div></div>
         <div class="content-col">
-          <div class="stop-name">Thivanka Image House</div>
+          <div class="stop-name"><span class="stop-seq">3</span>Thivanka Image House</div>
           <div class="stop-note">Finest surviving Polonnaruwa-era frescoes inside. The triple-bent Buddha pose ('Thivanka') is unique in Sri Lankan art. No flash photography. <em>60 min.</em></div>
         </div>
       </div>
